@@ -56,4 +56,23 @@ Work on feature branches from `develop`. Do not commit, merge, push, or deploy w
 
 ## Deploy
 
-Vercel is the intended host. Do not deploy until the owner approves that phase.
+### Cloudflare Pages (Free Plan)
+
+The application is configured for zero-cost static hosting on **Cloudflare Pages Free Plan**:
+- Unlimited bandwidth, global Anycast CDN edge caching, and automated SSL/TLS (HTTPS).
+- Build command: `npm run build`
+- Output directory: `out`
+- Framework preset: `Next.js (Static HTML Export)`
+
+#### Step-by-Step Setup:
+1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/) and navigate to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
+2. Select the GitHub repository `Simran688/koffeman`.
+3. Set the build configuration:
+   - **Framework preset**: `Next.js (Static HTML Export)`
+   - **Build command**: `npm run build`
+   - **Build output directory**: `out`
+   - **Environment variables**: Add `NODE_VERSION` with value `20`
+4. Click **Save and Deploy**. Cloudflare will build the site and assign a free preview URL on `*.pages.dev`.
+5. **Preview Deployments**: Every Git branch or Pull Request pushed to GitHub automatically generates an isolated preview deployment URL.
+6. **Production Domain**: The `main` or `develop` branch deploys to `<project-name>.pages.dev`. A custom domain (such as `koffeeman.in`) can be connected under Custom Domains with free automatic SSL certificates.
+7. **Security Headers**: Cloudflare Pages automatically serves strict security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) from the edge using the root `public/_headers` file.
