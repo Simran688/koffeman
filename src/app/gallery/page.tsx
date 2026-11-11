@@ -7,9 +7,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: `Café & Food Gallery — ${siteConfig.brandName} NSP`,
+  title: `Café & Food Gallery — Koffee Man NSP, Pitampura`,
   description:
-    "Explore the KoffeeMan gallery. Sample illustrative moments of our coffee, beverages, comfort food, and café vibes in NSP, Pitampura.",
+    "Explore the KoffeeMan gallery. Illustrative moments of our coffee, beverages, comfort food, and café vibes in Netaji Subhash Place (NSP), Pitampura.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/gallery`,
+  },
 };
 
 export default function GalleryPage() {

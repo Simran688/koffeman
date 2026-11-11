@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site-config";
 import { menuCategories } from "@/data/menu";
+import { outletLocations } from "@/data/locations";
 
 export const dynamic = "force-static";
 
@@ -23,8 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/visit-us`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/about`,
@@ -58,6 +59,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const outletRoutes: MetadataRoute.Sitemap = outletLocations.map((outlet) => ({
+    url: `${baseUrl}/visit-us/${outlet.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
   const categoryRoutes: MetadataRoute.Sitemap = menuCategories.map((cat) => ({
     url: `${baseUrl}/menu/${cat.slug}`,
     lastModified: new Date(),
@@ -65,6 +73,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...categoryRoutes];
+  return [...staticRoutes, ...outletRoutes, ...categoryRoutes];
 }
-

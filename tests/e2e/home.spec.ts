@@ -142,10 +142,54 @@ test.describe("Koffee Man Website — End-to-End Suite", () => {
     await expect(eventCall).toHaveAttribute("href", "tel:+919811161923");
   });
 
+  test("distinct outlet pages load with verified addresses, missing notes, and zero prices", async ({
+    page,
+  }) => {
+    // GD-ITL Tower
+    await page.goto("/visit-us/gd-itl-tower");
+    await expect(
+      page.getByRole("heading", { name: /KoffeeMan at GD-ITL Tower, NSP/i })
+    ).toBeVisible({ timeout: 15_000 });
+    await expect(
+      page.getByText(/Exact unit\/floor number is pending owner confirmation/i)
+    ).toBeVisible();
+
+    // Aggarwal Corporate Heights
+    await page.goto("/visit-us/aggarwal-corporate-heights");
+    await expect(
+      page.getByRole("heading", {
+        name: /KoffeeMan at Aggarwal Corporate Heights, NSP/i,
+      })
+    ).toBeVisible({ timeout: 15_000 });
+    await expect(
+      page.getByText(/Shop G8, Aggarwal Corporate Heights/i).first()
+    ).toBeVisible();
+  });
+
+  test("404 error page loads with branded messaging and recovery navigation", async ({
+    page,
+  }) => {
+    const response = await page.goto("/non-existent-page-url");
+    // Under static preview / dev, verify page renders 404 content
+    await expect(
+      page.getByRole("heading", { name: /Oops! This Cup Is Empty/i })
+    ).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole("link", { name: "Return Home" })).toBeVisible();
+  });
+
   test("negative verification: zero currency symbols or prices exist on key routes", async ({
     page,
   }) => {
-    const routes = ["/", "/menu", "/menu/coffee", "/about", "/gallery", "/visit-us"];
+    const routes = [
+      "/",
+      "/menu",
+      "/menu/coffee",
+      "/about",
+      "/gallery",
+      "/visit-us",
+      "/visit-us/gd-itl-tower",
+      "/visit-us/aggarwal-corporate-heights",
+    ];
 
     for (const route of routes) {
       await page.goto(route);

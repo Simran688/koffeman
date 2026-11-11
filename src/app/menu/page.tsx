@@ -5,9 +5,12 @@ import { Container } from "@/components/ui/Container";
 import { MenuGrid } from "@/components/menu/MenuGrid";
 
 export const metadata: Metadata = {
-  title: `Our Menu — ${siteConfig.brandName} NSP, Pitampura`,
+  title: `Menu — Coffee, Shakes, Momos, Pasta & Quick Bites | KoffeeMan NSP`,
   description:
-    "Explore the full KoffeeMan café menu. Coffee, shakes, mojitos, sandwiches, burgers, quick bites, Chinese specialities, and chai in NSP, Pitampura.",
+    "Explore the complete KoffeeMan menu in Netaji Subhash Place (NSP), Pitampura. Cold coffee, thick shakes, steamed momos, grilled sandwiches, and comfort pasta.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/menu`,
+  },
 };
 
 export default function MenuPage() {
