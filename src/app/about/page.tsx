@@ -7,9 +7,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: `About KoffeeMan — Our Story & Founder Note`,
+  title: `About KoffeeMan — Our Story & Founder Note | Rohit Chhabra`,
   description:
     "Discover the story of KoffeeMan. Founded by Rohit Chhabra from a roadside van to our first franchise in 2022. Good Food. Good Coffee. Good Vibes in NSP, Pitampura.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/about`,
+  },
 };
 
 export default function AboutPage() {

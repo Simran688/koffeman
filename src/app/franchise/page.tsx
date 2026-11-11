@@ -6,9 +6,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: `Own a KoffeeMan Franchise — ${siteConfig.brandName}`,
+  title: `KoffeeMan Franchise Enquiries & Opportunities`,
   description:
-    "Partner with KoffeeMan. Bring our premium coffee and endless cravings to your location. Connect with us directly to discuss franchise opportunities.",
+    "Partner with KoffeeMan. Bring our coffee, shakes, and comfort menu to your location. Connect with us directly for KoffeeMan franchise enquiries.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/franchise`,
+  },
 };
 
 export default function FranchisePage() {

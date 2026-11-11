@@ -6,9 +6,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: `Contact Us — ${siteConfig.brandName} NSP, Pitampura`,
+  title: `Contact KoffeeMan — Café Enquiries NSP, Pitampura`,
   description:
-    "Connect with KoffeeMan café. Call 9811161923 or 8700020291 for takeaway, franchise, or event bookings in NSP, Pitampura, Delhi.",
+    "Connect with KoffeeMan café. Call 9811161923 or 8700020291 for takeaway, franchise discussions, or event bookings in NSP, Pitampura, Delhi.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/contact`,
+  },
 };
 
 export default function ContactPage() {

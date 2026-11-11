@@ -2,9 +2,10 @@ import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
-import { JsonLd } from "@/components/seo/JsonLd";
+import { BrandJsonLd, OutletRestaurantJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site-config";
 import { menuCategories } from "@/data/menu";
+import { outletLocations } from "@/data/locations";
 import { containsPrice } from "@/lib/no-prices";
 import nextConfig from "../next.config";
 
@@ -15,10 +16,11 @@ describe("SEO, Metadata, Security Headers & Accessibility", () => {
     expect(robotsConfig.rules).toEqual({
       userAgent: "*",
       allow: "/",
+      disallow: ["/api/"],
     });
   });
 
-  it("generates comprehensive sitemap with all core pages and menu categories", () => {
+  it("generates comprehensive sitemap with all core pages, outlets, and menu categories", () => {
     const entries = sitemap();
     const urls = entries.map((e) => e.url);
 
@@ -32,30 +34,75 @@ describe("SEO, Metadata, Security Headers & Accessibility", () => {
     expect(urls).toContain(`${siteConfig.siteUrl}/events`);
     expect(urls).toContain(`${siteConfig.siteUrl}/contact`);
 
+    // Outlet routes
+    outletLocations.forEach((outlet) => {
+      expect(urls).toContain(`${siteConfig.siteUrl}/visit-us/${outlet.slug}`);
+    });
+
     // All dynamic menu category routes
     menuCategories.forEach((cat) => {
       expect(urls).toContain(`${siteConfig.siteUrl}/menu/${cat.slug}`);
     });
 
-    expect(entries.length).toBe(8 + menuCategories.length);
+    expect(entries.length).toBe(
+      8 + outletLocations.length + menuCategories.length
+    );
   });
 
-  it("renders valid Schema.org CafeOrCoffeeShop JSON-LD with zero prices", () => {
-    const { container } = render(<JsonLd />);
+  it("renders valid Schema.org Brand Organization & WebSite JSON-LD with zero prices", () => {
+    const { container } = render(<BrandJsonLd />);
     const script = container.querySelector("script[type='application/ld+json']");
     expect(script).not.toBeNull();
 
     const data = JSON.parse(script!.textContent || "{}");
     expect(data["@context"]).toBe("https://schema.org");
-    expect(data["@type"]).toBe("CafeOrCoffeeShop");
-    expect(data.name).toBe(siteConfig.brandName);
-    expect(data.telephone).toBe("+919811161923");
-    expect(data.address).toHaveLength(2);
-    expect(data.servesCuisine).toContain("Coffee");
+    expect(data["@graph"]).toBeDefined();
+    expect(data["@graph"]).toHaveLength(2);
+
+    const website = data["@graph"].find(
+      (item: { "@type": string }) => item["@type"] === "WebSite"
+    );
+    expect(website).toBeDefined();
+    expect(website.name).toBe(siteConfig.brandName);
+
+    const org = data["@graph"].find(
+      (item: { "@type": string }) => item["@type"] === "Organization"
+    );
+    expect(org).toBeDefined();
+    expect(org.founder.name).toBe(siteConfig.founder.name);
+    expect(org.sameAs).toContain(siteConfig.contact.instagramUrl);
 
     // Negative check: absolutely zero price fields or currency symbols
-    expect(data.priceRange).toBeUndefined();
     expect(containsPrice(JSON.stringify(data))).toBe(false);
+  });
+
+  it("renders valid Schema.org Restaurant JSON-LD for each outlet without prices or fake ratings", () => {
+    outletLocations.forEach((outlet) => {
+      const { container } = render(<OutletRestaurantJsonLd outlet={outlet} />);
+      const script = container.querySelector(
+        "script[type='application/ld+json']"
+      );
+      expect(script).not.toBeNull();
+
+      const data = JSON.parse(script!.textContent || "{}");
+      expect(data["@context"]).toBe("https://schema.org");
+      expect(data["@type"]).toBe("Restaurant");
+      expect(data["@id"]).toBe(
+        `${siteConfig.siteUrl}/visit-us/${outlet.slug}#restaurant`
+      );
+      expect(data.name).toContain(outlet.name);
+      expect(data.address.postalCode).toBe("110034");
+      expect(data.hasMenu).toBe(`${siteConfig.siteUrl}/menu`);
+      expect(data.servesCuisine).toContain("Coffee");
+
+      // Critical negative checks:
+      expect(data.priceRange).toBeUndefined();
+      expect(data.aggregateRating).toBeUndefined();
+      expect(data.review).toBeUndefined();
+      expect(data.openingHours).toBeUndefined();
+      expect(data.geo).toBeUndefined();
+      expect(containsPrice(JSON.stringify(data))).toBe(false);
+    });
   });
 
   it("configures strict security headers in next.config.ts", async () => {
@@ -71,7 +118,9 @@ describe("SEO, Metadata, Security Headers & Accessibility", () => {
       expect(keys).toContain("Referrer-Policy");
       expect(keys).toContain("Permissions-Policy");
 
-      const frameOptions = headers.find((h: { key: string }) => h.key === "X-Frame-Options");
+      const frameOptions = headers.find(
+        (h: { key: string }) => h.key === "X-Frame-Options"
+      );
       expect(frameOptions?.value).toBe("DENY");
     }
   });

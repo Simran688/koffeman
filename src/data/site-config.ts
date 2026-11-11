@@ -50,15 +50,19 @@ export const siteConfig = {
   outlets: [
     {
       id: "gd-itl",
+      slug: "gd-itl-tower",
       name: "GD-ITL Tower",
+      url: "/visit-us/gd-itl-tower",
       // Exact shop/floor number is not yet supplied by the owner. Do not invent one.
       address: "Netaji Subhash Place, Pitampura, Delhi",
       mapsQueryUrl:
         "https://www.google.com/maps/search/?api=1&query=GD-ITL+Tower+Netaji+Subhash+Place+Pitampura+Delhi",
     },
     {
-      id: "aggarwal-corporate-heights",
+      id: "aggarwal",
+      slug: "aggarwal-corporate-heights",
       name: "Aggarwal Corporate Heights",
+      url: "/visit-us/aggarwal-corporate-heights",
       address:
         "Shop G8, Aggarwal Corporate Heights, NSP, Pitampura, Delhi – 110034",
       mapsQueryUrl:

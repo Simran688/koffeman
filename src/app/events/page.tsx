@@ -6,9 +6,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: `Event Bookings & Catering Enquiry — ${siteConfig.brandName}`,
+  title: `KoffeeMan Event Bookings & Catering Enquiry — Delhi`,
   description:
-    "Bring KoffeeMan to your special celebrations. Enquire about coffee and snack setups for weddings, private parties, festive occasions, cultural fests, and college events in Delhi.",
+    "Book KoffeeMan for your celebrations. Coffee and snack setups for weddings, private parties, corporate events, and college fests in Delhi. Enquire now.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/events`,
+  },
 };
 
 export default function EventsPage() {

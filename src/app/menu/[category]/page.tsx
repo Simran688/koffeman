@@ -17,6 +17,37 @@ export function generateStaticParams() {
   }));
 }
 
+const categoryMetaTitles: Record<string, { title: string; desc: string }> = {
+  coffee: {
+    title: "Cold Coffee & Hot Brews — KoffeeMan Menu NSP, Pitampura",
+    desc: "Discover classic cold coffee, iced lattes, and hot espresso brews at KoffeeMan in Netaji Subhash Place (NSP), Pitampura.",
+  },
+  shakes: {
+    title: "Creamy Shakes & Dessert Blends — KoffeeMan Menu NSP",
+    desc: "Thick shakes and dessert-inspired chilled blends at KoffeeMan café in NSP, Pitampura.",
+  },
+  chinese: {
+    title: "Momos & Chinese Favourites — KoffeeMan Menu NSP, Pitampura",
+    desc: "Veg momos, paneer momos, noodles, and rolls prepared fresh at KoffeeMan in Netaji Subhash Place, Pitampura.",
+  },
+  sandwiches: {
+    title: "Grilled Sandwiches & Burgers — KoffeeMan Menu NSP",
+    desc: "Toasted grilled sandwiches and stacked burgers made fresh to order at KoffeeMan NSP, Pitampura.",
+  },
+  "quick-bites": {
+    title: "Pasta, Fries & Comfort Quick Bites — KoffeeMan Menu NSP",
+    desc: "Comfort pasta, hot Maggi bowls, fries, and cheesy quick bites at KoffeeMan in Netaji Subhash Place (NSP), Pitampura.",
+  },
+  mojitos: {
+    title: "Mojitos & Coolers — KoffeeMan Menu NSP, Pitampura",
+    desc: "Chilled mint mojitos, fruit refreshers, and iced coolers at KoffeeMan in NSP, Pitampura.",
+  },
+  chai: {
+    title: "Chai & Warm Brews — KoffeeMan Menu NSP, Pitampura",
+    desc: "Traditional desi chai, masala tea, and soothing warm beverages at KoffeeMan in NSP, Pitampura.",
+  },
+};
+
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
@@ -24,13 +55,31 @@ export async function generateMetadata({
   const cat = getMenuCategory(category);
   if (!cat) {
     return {
-      title: "Menu Category Not Found — Koffee Man",
+      title: "Menu Category Not Found | Koffee Man",
     };
   }
 
+  const metaOverride = categoryMetaTitles[cat.slug];
+  const title = metaOverride?.title ?? `${cat.title} — ${siteConfig.brandName} Menu`;
+  const description =
+    metaOverride?.desc ??
+    `${cat.title} menu at ${siteConfig.brandName}, NSP, Pitampura. ${cat.description}`;
+  const canonicalUrl = `${siteConfig.siteUrl}/menu/${cat.slug}`;
+
   return {
-    title: `${cat.title} — ${siteConfig.brandName} Menu`,
-    description: `${cat.title} menu at ${siteConfig.brandName}, NSP, Pitampura. ${cat.description}`,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: siteConfig.brandName,
+      locale: "en_IN",
+      type: "website",
+    },
   };
 }
 

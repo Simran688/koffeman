@@ -7,9 +7,12 @@ import { OutletCard } from "@/components/locations/OutletCard";
 import { DeliveryPanel } from "@/components/ui/DeliveryPanel";
 
 export const metadata: Metadata = {
-  title: `Visit Us — ${siteConfig.brandName} Outlets in NSP, Pitampura`,
+  title: `Café Outlets in NSP, Pitampura — ${siteConfig.brandName} Locations`,
   description:
-    "Find KoffeeMan café outlets at GD-ITL Tower and Aggarwal Corporate Heights in Netaji Subhash Place (NSP), Pitampura, Delhi. Get map directions and visit today.",
+    "Find KoffeeMan café outlets at GD-ITL Tower and Aggarwal Corporate Heights in Netaji Subhash Place (NSP), Pitampura, Delhi. Get directions, outlet info, and order online.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/visit-us`,
+  },
 };
 
 export default function VisitUsPage() {
