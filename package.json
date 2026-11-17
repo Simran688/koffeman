@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "audit:prices": "node scripts/assert-no-prices.mjs"
+    "audit:prices": "node scripts/assert-no-prices.mjs",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "next": "16.4.3",
