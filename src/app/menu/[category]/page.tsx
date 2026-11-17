@@ -19,8 +19,8 @@ export function generateStaticParams() {
 
 const categoryMetaTitles: Record<string, { title: string; desc: string }> = {
   coffee: {
-    title: "Cold Coffee & Hot Brews — KoffeeMan Menu NSP, Pitampura",
-    desc: "Discover classic cold coffee, iced lattes, and hot espresso brews at KoffeeMan in Netaji Subhash Place (NSP), Pitampura.",
+    title: "Cold Coffee & Beaten Brews — KoffeeMan Menu NSP, Pitampura",
+    desc: "Discover classic cold coffee, handcrafted beaten coffee, and signature brews at KoffeeMan in Netaji Subhash Place (NSP), Pitampura.",
   },
   shakes: {
     title: "Creamy Shakes & Dessert Blends — KoffeeMan Menu NSP",
@@ -92,45 +92,57 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
   }
 
   return (
-    <main className="min-h-[80vh] py-8 md:py-12 bg-[#F4E4CA]">
+    <main className="min-h-[80vh] py-10 md:py-16 bg-[#F5EBDD]">
       <Container>
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="text-[11px] text-[#866D5B] mb-6">
+        <nav aria-label="Breadcrumb" className="text-xs text-[#75452F] mb-6 font-semibold">
           <Link
-            href="/#menu"
-            className="text-[#7F5738] font-bold hover:text-[#C84B36] transition-colors"
+            href="/menu"
+            className="text-[#B87943] hover:text-[#21120F] transition-colors"
           >
             ← Back to menu
           </Link>
-          <span className="mx-2">/</span>
-          <span className="text-[#392929] font-medium">{cat.title}</span>
+          <span className="mx-2 text-[#C5A66B]">/</span>
+          <span className="text-[#21120F]">{cat.title}</span>
         </nav>
 
         {/* Detail Hero Banner */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] bg-[#392929] rounded-[18px] overflow-hidden mb-8 shadow-[0_16px_42px_rgba(57,41,41,0.12)]">
-          <div className="p-8 md:p-12 text-[#FFF8EE] flex flex-col justify-center">
-            <div className="section-kicker text-[#D6B66C]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] bg-[#21120F] rounded-[22px] overflow-hidden mb-10 shadow-[0_20px_50px_rgba(33,18,15,0.25)] border border-[#C5A66B]/30">
+          <div className="p-8 md:p-12 text-[#FFFDF8] flex flex-col justify-center">
+            <div className="text-[10px] uppercase tracking-[0.24em] font-bold text-[#C5A66B] mb-2">
               Explore the KoffeeMan menu
             </div>
-            <h1 className="font-bree text-[36px] md:text-[48px] text-[#F4E4CA] my-3 leading-tight">
+            <h1 className="font-cormorant font-bold text-[36px] sm:text-[46px] md:text-[54px] text-[#F5EBDD] my-2 leading-[1.05]">
               {cat.title}
             </h1>
-            <p className="text-[13px] text-[#e8d9cb] leading-[1.7] max-w-[520px] mb-6">
+            <p className="text-xs md:text-sm font-semibold text-[#C5A66B] m-0 mb-3">
+              {cat.subtitle}
+            </p>
+            <p className="text-xs md:text-sm text-[#D8C5B8] leading-[1.8] max-w-[520px] mb-6">
               {cat.description}
             </p>
+
+            {/* Coffee Accuracy Note */}
+            {cat.slug === "coffee" && (
+              <div className="mb-6 p-3 rounded-xl bg-[#321D17] border border-[#C5A66B]/40 text-xs text-[#E8D4C2]">
+                ✦ <strong>Authentic Beaten Coffee:</strong> Handcrafted beaten brews, iced coffee, and black coffee. Zero machine espresso.
+              </div>
+            )}
+
             <div>
               <Button
                 variant="gold"
                 href={siteConfig.ordering.swiggyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider"
               >
                 Order on Swiggy ↗
               </Button>
             </div>
           </div>
 
-          <div className="relative min-h-[240px] lg:min-h-[300px] w-full bg-[#2D2020]">
+          <div className="relative min-h-[260px] lg:min-h-[340px] w-full bg-[#321D17]">
             <Image
               src={cat.image}
               alt={cat.title}
@@ -139,39 +151,40 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
               priority
               className="object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#21120F]/60 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
 
         {/* Detail Item Catalogue List */}
-        <div className="bg-[#FFF8EE] border border-[#D9C4A5] rounded-[16px] p-6 md:p-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-6">
+        <div className="bg-[#FFFDF8] border border-[#C5A66B]/30 rounded-[20px] p-6 sm:p-8 md:p-10 shadow-[0_16px_36px_rgba(33,18,15,0.06)]">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-8 pb-4 border-b border-[#F5EBDD]">
             <div>
               <div className="section-kicker">The selection</div>
-              <h2 className="font-bree text-[24px] md:text-[28px] text-[#392929] m-0">
+              <h2 className="font-cormorant font-bold text-[28px] md:text-[34px] text-[#21120F] m-0">
                 Explore the range
               </h2>
             </div>
             <span className="eyebrow">Good food · Good coffee</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {cat.groups.map((group) => (
               <section
                 key={group.title}
-                className="border border-[#D9C4A5] bg-[#FBF1E4] rounded-[11px] p-[18px]"
+                className="border border-[#C5A66B]/25 bg-[#F5EBDD]/60 rounded-[14px] p-5 sm:p-6"
               >
-                <h3 className="font-bree text-[18px] text-[#7F5738] m-0 mb-3">
+                <h3 className="font-cormorant font-bold text-[22px] text-[#75452F] m-0 mb-4 leading-snug">
                   {group.title}
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {group.items.map((item) => (
                     <div
                       key={item}
-                      className="text-[12px] leading-[1.45] text-[#4e3b30] relative pl-3.5"
+                      className="text-xs sm:text-[13px] leading-relaxed text-[#321D17] relative pl-4 font-medium"
                     >
                       <span
                         aria-hidden="true"
-                        className="absolute left-0 top-0 text-[#D6B66C] text-[9px]"
+                        className="absolute left-0 top-0 text-[#C5A66B] text-[10px]"
                       >
                         ✦
                       </span>
@@ -184,13 +197,13 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
           </div>
 
           {/* Footer Call to Action */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#392929] text-[#FFF8EE] p-6 md:p-7 rounded-[14px] mt-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#21120F] text-[#FFFDF8] p-6 md:p-8 rounded-[16px] mt-8 border border-[#C5A66B]/30">
             <div>
-              <h3 className="font-bree text-[21px] md:text-[23px] text-[#F4E4CA] m-0 mb-1">
+              <h3 className="font-cormorant font-bold text-[22px] md:text-[26px] text-[#F5EBDD] m-0 mb-1">
                 Found your favourite?
               </h3>
-              <p className="text-[11px] text-[#ddcdbd] m-0">
-                Order online or visit us at NSP, Pitampura.
+              <p className="text-xs text-[#D8C5B8] m-0">
+                Order online on Swiggy or visit us in Netaji Subhash Place, Pitampura.
               </p>
             </div>
             <Button
@@ -198,6 +211,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
               href={siteConfig.ordering.swiggyUrl}
               target="_blank"
               rel="noopener noreferrer"
+              className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider shrink-0"
             >
               Order on Swiggy ↗
             </Button>
@@ -207,4 +221,3 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
     </main>
   );
 }
-

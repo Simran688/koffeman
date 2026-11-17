@@ -4,6 +4,7 @@ import { siteConfig } from "@/data/site-config";
 import { outletLocations } from "@/data/locations";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: `Contact KoffeeMan — Café Enquiries NSP, Pitampura`,
@@ -16,43 +17,43 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-[80vh] py-8 md:py-14 bg-[#F4E4CA]">
+    <main className="min-h-[80vh] py-10 md:py-16 bg-[#F5EBDD]">
       <Container>
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-[11px] text-[#866D5B] mb-6">
+        <nav aria-label="Breadcrumb" className="text-xs text-[#75452F] mb-6 font-semibold">
           <Link
             href="/"
-            className="text-[#7F5738] font-bold hover:text-[#C84B36] transition-colors"
+            className="text-[#B87943] hover:text-[#21120F] transition-colors"
           >
             ← Home
           </Link>
-          <span className="mx-2">/</span>
-          <span className="text-[#392929] font-medium">Contact Us</span>
+          <span className="mx-2 text-[#C5A66B]">/</span>
+          <span className="text-[#21120F]">Contact Us</span>
         </nav>
 
         {/* Section Heading */}
-        <div className="mb-10">
+        <div className="mb-12 pb-8 border-b border-[#C5A66B]/25">
           <div className="section-kicker">We&apos;re here for you</div>
-          <h1 className="font-bree text-[clamp(34px,4.5vw,52px)] leading-[1.08] tracking-[-0.025em] text-[#392929] m-0">
+          <h1 className="font-cormorant font-bold text-[clamp(36px,4.5vw,58px)] leading-[1.02] tracking-[-0.025em] text-[#21120F] m-0">
             Contact KoffeeMan
           </h1>
-          <p className="text-[14px] text-[#866D5B] leading-[1.7] max-w-[520px] mt-2 mb-0">
-            Call us directly for queries, takeaway, franchise discussions, or event bookings.
+          <p className="text-sm md:text-base text-[#75452F] leading-relaxed max-w-[540px] mt-2 mb-0">
+            Call us directly for general queries, takeaway, franchise discussions, or celebration event bookings in Netaji Subhash Place, Pitampura.
           </p>
         </div>
 
-        {/* Contact Methods Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+        {/* Direct Phone & Social Action Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* Primary Phone */}
-          <article className="bg-[#FFF8EE] border border-[#D9C4A5] p-6 rounded-[14px] flex flex-col justify-between shadow-[0_5px_17px_rgba(57,41,41,0.04)]">
+          <article className="bg-[#FFFDF8] border border-[#C5A66B]/30 p-7 rounded-[18px] flex flex-col justify-between shadow-sm transition-all duration-300 hover:border-[#C5A66B]">
             <div>
-              <div aria-hidden="true" className="text-[26px] text-[#7F5738] mb-3">
+              <div aria-hidden="true" className="text-[26px] text-[#C5A66B] mb-3">
                 ☎
               </div>
-              <h2 className="font-bree text-[20px] text-[#392929] m-0 mb-1">
+              <h2 className="font-cormorant font-bold text-[24px] text-[#21120F] m-0 mb-1">
                 Primary Phone
               </h2>
-              <p className="text-[12px] text-[#866D5B] m-0 mb-4 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#75452F] m-0 mb-5 leading-relaxed">
                 For general enquiries, franchise questions, and celebration bookings.
               </p>
             </div>
@@ -60,44 +61,46 @@ export default function ContactPage() {
               variant="dark"
               href={siteConfig.contact.primaryPhoneTel}
               aria-label={`Call ${siteConfig.contact.primaryPhone}`}
+              className="!py-3 text-xs font-bold uppercase tracking-wider justify-center"
             >
               Call {siteConfig.contact.primaryPhone}
             </Button>
           </article>
 
           {/* Secondary Phone */}
-          <article className="bg-[#FFF8EE] border border-[#D9C4A5] p-6 rounded-[14px] flex flex-col justify-between shadow-[0_5px_17px_rgba(57,41,41,0.04)]">
+          <article className="bg-[#FFFDF8] border border-[#C5A66B]/30 p-7 rounded-[18px] flex flex-col justify-between shadow-sm transition-all duration-300 hover:border-[#C5A66B]">
             <div>
-              <div aria-hidden="true" className="text-[26px] text-[#7F5738] mb-3">
+              <div aria-hidden="true" className="text-[26px] text-[#C5A66B] mb-3">
                 📞
               </div>
-              <h2 className="font-bree text-[20px] text-[#392929] m-0 mb-1">
+              <h2 className="font-cormorant font-bold text-[24px] text-[#21120F] m-0 mb-1">
                 Secondary Phone
               </h2>
-              <p className="text-[12px] text-[#866D5B] m-0 mb-4 leading-relaxed">
-                Alternative direct line for customer assistance and quick calls.
+              <p className="text-xs sm:text-sm text-[#75452F] m-0 mb-5 leading-relaxed">
+                Alternative direct line for customer assistance and quick takeaway calls.
               </p>
             </div>
             <Button
               variant="outline"
               href={siteConfig.contact.secondaryPhoneTel}
               aria-label={`Call ${siteConfig.contact.secondaryPhone}`}
+              className="!py-3 text-xs font-bold uppercase tracking-wider justify-center"
             >
               Call {siteConfig.contact.secondaryPhone}
             </Button>
           </article>
 
           {/* Instagram */}
-          <article className="bg-[#FFF8EE] border border-[#D9C4A5] p-6 rounded-[14px] flex flex-col justify-between shadow-[0_5px_17px_rgba(57,41,41,0.04)]">
+          <article className="bg-[#FFFDF8] border border-[#C5A66B]/30 p-7 rounded-[18px] flex flex-col justify-between shadow-sm transition-all duration-300 hover:border-[#C5A66B]">
             <div>
-              <div aria-hidden="true" className="text-[26px] text-[#7F5738] mb-3">
+              <div aria-hidden="true" className="text-[26px] text-[#C5A66B] mb-3">
                 ✦
               </div>
-              <h2 className="font-bree text-[20px] text-[#392929] m-0 mb-1">
+              <h2 className="font-cormorant font-bold text-[24px] text-[#21120F] m-0 mb-1">
                 Instagram
               </h2>
-              <p className="text-[12px] text-[#866D5B] m-0 mb-4 leading-relaxed">
-                Follow our latest updates, vibes, and café moments.
+              <p className="text-xs sm:text-sm text-[#75452F] m-0 mb-5 leading-relaxed">
+                Follow our latest updates, daily vibes, and café moments.
               </p>
             </div>
             <Button
@@ -106,38 +109,46 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow KoffeeMan on Instagram"
+              className="!py-3 text-xs font-bold uppercase tracking-wider justify-center"
             >
               Follow {siteConfig.contact.instagramHandle} ↗
             </Button>
           </article>
         </div>
 
+        {/* Functional Contact & Enquiry Form */}
+        <div className="mb-14">
+          <ContactForm />
+        </div>
+
         {/* Outlets Overview */}
-        <div className="bg-[#FFF8EE] border border-[#D9C4A5] p-6 md:p-8 rounded-[16px]">
-          <h2 className="font-bree text-[24px] text-[#392929] m-0 mb-2">
+        <div className="bg-[#FFFDF8] border border-[#C5A66B]/30 p-7 md:p-10 rounded-[20px] shadow-sm">
+          <h2 className="font-cormorant font-bold text-[28px] text-[#21120F] m-0 mb-2">
             Our Outlets in NSP, Pitampura
           </h2>
-          <p className="text-[13px] text-[#866D5B] m-0 mb-6">
+          <p className="text-xs sm:text-sm text-[#75452F] m-0 mb-6">
             Visit us in person at Netaji Subhash Place.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {outletLocations.map((outlet) => (
               <div
                 key={outlet.id}
-                className="p-5 border border-[#D9C4A5] rounded-[11px] bg-[#FBF1E4]"
+                className="p-6 border border-[#C5A66B]/25 rounded-[14px] bg-[#F5EBDD]/60 flex flex-col justify-between"
               >
-                <h3 className="font-bree text-[18px] text-[#7F5738] m-0 mb-1">
-                  {outlet.name}
-                </h3>
-                <p className="text-[12px] text-[#866D5B] m-0 mb-3">
-                  {outlet.address}
-                </p>
+                <div>
+                  <h3 className="font-cormorant font-bold text-[22px] text-[#75452F] m-0 mb-1.5">
+                    {outlet.name}
+                  </h3>
+                  <p className="text-xs text-[#75452F] m-0 mb-4 leading-relaxed">
+                    {outlet.address}
+                  </p>
+                </div>
                 <a
                   href={outlet.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-bold text-[#7F5738] border-b border-[#D6B66C] pb-0.5 hover:text-[#C84B36] transition-colors"
+                  className="text-xs font-bold text-[#B87943] border-b border-[#C5A66B] pb-0.5 hover:text-[#21120F] transition-colors inline-block w-fit"
                 >
                   Get directions on Google Maps ↗
                 </a>
@@ -149,4 +160,3 @@ export default function ContactPage() {
     </main>
   );
 }
-

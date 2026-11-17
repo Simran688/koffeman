@@ -14,39 +14,44 @@ export function DeliveryPanel({
 }: DeliveryPanelProps) {
   return (
     <div
+      id="order"
       aria-label="Online ordering options"
-      className={`rounded-[14px] bg-[#392929] p-6 md:px-7 md:py-6 text-[#FFF8EE] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_16px_42px_rgba(57,41,41,0.12)] ${className}`.trim()}
+      className={`rounded-[20px] bg-[#21120F] border border-[#C5A66B]/35 p-6 md:px-8 md:py-7 text-[#FFFDF8] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)] ${className}`.trim()}
     >
       <div>
-        <h3 className="font-bree text-[22px] md:text-[25px] text-[#F4E4CA] m-0 mb-1 leading-snug">
+        <div className="text-[10px] font-bold tracking-[0.2em] text-[#C5A66B] uppercase mb-1">
+          Delivery & Takeaway
+        </div>
+        <h3 className="font-cormorant font-bold text-[24px] md:text-[28px] text-[#F5EBDD] m-0 mb-1 leading-snug">
           {title}
         </h3>
-        <p className="text-[12px] text-[#dfd0c1] m-0 leading-relaxed">
+        <p className="text-xs md:text-sm text-[#D8C5B8] m-0 leading-relaxed max-w-xl">
           {subtitle}
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+      <div className="flex flex-wrap items-center gap-3 shrink-0">
         <Button
           variant="gold"
           href={siteConfig.ordering.swiggyUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Order KoffeeMan on Swiggy"
+          className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider"
         >
-          Swiggy ↗
+          Order on Swiggy ↗
         </Button>
         <Button
-          variant="light"
+          variant="outline-gold"
           href={siteConfig.ordering.zomatoSearchUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Find KoffeeMan on Zomato"
+          className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider"
         >
-          Zomato ↗
+          Find on Zomato ↗
         </Button>
       </div>
     </div>
   );
 }
-

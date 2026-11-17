@@ -3,40 +3,40 @@ import { Button } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <main className="min-h-[75vh] py-16 md:py-24 bg-[#F4E4CA] flex items-center">
+    <main className="min-h-[75vh] py-16 md:py-24 bg-[#F5EBDD] flex items-center">
       <Container>
-        <div className="max-w-xl mx-auto text-center bg-[#FFF8EE] border border-[#D9C4A5] rounded-[22px] p-8 md:p-14 shadow-[0_16px_42px_rgba(57,41,41,0.08)]">
+        <div className="max-w-xl mx-auto text-center bg-[#FFFDF8] border border-[#C5A66B]/35 rounded-[24px] p-8 md:p-14 shadow-[0_20px_50px_rgba(33,18,15,0.08)]">
           <span
             aria-hidden="true"
-            className="font-bree text-[72px] md:text-[96px] leading-none text-[#7F5738] block mb-2"
+            className="font-cormorant font-bold text-[76px] md:text-[100px] leading-none text-[#C5A66B] block mb-2"
           >
             404
           </span>
           <div className="section-kicker">Page Not Found</div>
-          <h1 className="font-bree text-[30px] md:text-[38px] text-[#392929] m-0 mb-4 leading-tight">
+          <h1 className="font-cormorant font-bold text-[32px] md:text-[42px] text-[#21120F] m-0 mb-4 leading-tight">
             Oops! This Cup Is Empty
           </h1>
-          <p className="text-[14px] text-[#5f4a3b] leading-[1.7] mb-8 max-w-md mx-auto">
+          <p className="text-xs sm:text-sm text-[#75452F] leading-[1.7] mb-8 max-w-md mx-auto">
             The page you are looking for doesn&apos;t exist or may have moved. Let&apos;s get you back to the fresh brew and comfort bites.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
-            <Button variant="dark" href="/">
+            <Button variant="dark" href="/" className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider">
               Return Home
             </Button>
-            <Button variant="outline" href="/menu">
+            <Button variant="outline" href="/menu" className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider">
               Browse Menu
             </Button>
-            <Button variant="gold" href="/visit-us">
+            <Button variant="gold" href="/visit-us" className="!py-3 !px-6 text-xs font-bold uppercase tracking-wider">
               Visit NSP Outlets
             </Button>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#EAD8BD] text-[12px] text-[#866D5B]">
+          <div className="mt-8 pt-6 border-t border-[#F5EBDD] text-xs text-[#8F7466]">
             Need help? Call us at{" "}
             <a
               href="tel:+919811161923"
-              className="font-bold text-[#7F5738] hover:text-[#C84B36] transition-colors"
+              className="font-bold text-[#21120F] hover:text-[#B87943] transition-colors"
             >
               +91 9811161923
             </a>

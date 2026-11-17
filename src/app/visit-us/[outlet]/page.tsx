@@ -64,7 +64,7 @@ export default async function OutletDetailPage({ params }: OutletPageProps) {
   return (
     <>
       <OutletRestaurantJsonLd outlet={outlet} />
-      <main className="min-h-[80vh] py-8 md:py-14 bg-[#F4E4CA]">
+      <main className="min-h-[80vh] py-10 md:py-16 bg-[#F5EBDD]">
         <Container>
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="text-[11px] text-[#866D5B] mb-6">

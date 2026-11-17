@@ -1,18 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Lora:ital,wght@1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Bree+Serif&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Lora:ital,wght@1,500;1,600&display=swap");
 @import "tailwindcss";
 
 :root {
-  --cream: #F4E4CA;
-  --paper: #FFF8EE;
-  --espresso: #392929;
-  --coffee: #7F5738;
-  --gold: #D6B66C;
-  --terracotta: #C84B36;
+  /* Core Design Tokens */
+  --espresso-night: #21120F;
+  --coffee-dark: #321D17;
+  --roasted-brown: #75452F;
+  --caramel: #B87943;
+  --vintage-gold: #C5A66B;
+  --warm-cream: #F5EBDD;
+  --soft-white: #FFFDF8;
+
+  /* Semantic Theme Mappings */
+  --cream: #F5EBDD;
+  --paper: #FFFDF8;
+  --espresso: #21120F;
+  --coffee: #75452F;
+  --gold: #C5A66B;
+  --terracotta: #B87943;
   --sage: #54856C;
-  --muted: #866D5B;
-  --line: #D9C4A5;
-  --shadow: 0 16px 42px rgba(57, 41, 41, 0.12);
-  --font-serif: "Bree Serif", Georgia, serif;
+  --muted: #8F7466;
+  --line: rgba(197, 166, 107, 0.28);
+  --shadow: 0 16px 42px rgba(33, 18, 15, 0.15);
+  --shadow-lg: 0 24px 50px rgba(33, 18, 15, 0.25);
+
+  --font-serif: "Cormorant Garamond", "Bree Serif", Georgia, serif;
   --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-script: "Lora", Georgia, serif;
 }
@@ -36,8 +48,8 @@ html {
 }
 
 body {
-  background: var(--cream);
-  color: var(--espresso);
+  background: var(--warm-cream);
+  color: var(--espresso-night);
   font-family: var(--font-sans);
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +57,7 @@ body {
 
 /* Layout container */
 .shell {
-  width: min(1180px, calc(100% - 48px));
+  width: min(1200px, calc(100% - 48px));
   margin-left: auto;
   margin-right: auto;
 }
@@ -57,8 +69,12 @@ body {
 }
 
 /* Typography utilities */
+.font-cormorant {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
 .font-bree {
-  font-family: var(--font-serif);
+  font-family: "Bree Serif", "Cormorant Garamond", Georgia, serif;
 }
 
 .font-dmsans {
@@ -69,18 +85,19 @@ body {
   font-family: var(--font-script);
 }
 
-/* Reusable buttons matching prototype */
+/* Reusable buttons matching brand aesthetic */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 10px;
   border: 1px solid transparent;
-  padding: 13px 20px;
+  padding: 13px 24px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  letter-spacing: 0.04em;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -88,71 +105,134 @@ body {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 9px 20px rgba(57, 41, 41, 0.15);
+  box-shadow: 0 10px 24px rgba(33, 18, 15, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn-dark {
-  background: var(--espresso);
-  color: var(--paper);
+  background: var(--espresso-night);
+  color: var(--soft-white);
+  border-color: rgba(197, 166, 107, 0.3);
 }
 
 .btn-dark:hover {
-  background: #2b1f1f;
-  color: var(--cream);
+  background: #2f1a16;
+  border-color: var(--vintage-gold);
+  color: var(--warm-cream);
 }
 
 .btn-gold {
-  background: var(--gold);
-  color: var(--espresso);
+  background: var(--vintage-gold);
+  color: var(--espresso-night);
+  box-shadow: 0 4px 18px rgba(197, 166, 107, 0.35);
 }
 
 .btn-gold:hover {
-  background: #cca759;
+  background: #d4b579;
+  box-shadow: 0 8px 24px rgba(197, 166, 107, 0.5);
+}
+
+.btn-caramel {
+  background: var(--caramel);
+  color: var(--soft-white);
+}
+
+.btn-caramel:hover {
+  background: #a46734;
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--espresso);
-  border-color: var(--coffee);
+  color: var(--espresso-night);
+  border-color: var(--roasted-brown);
 }
 
 .btn-outline:hover {
-  background: rgba(127, 87, 56, 0.08);
+  background: rgba(117, 69, 47, 0.08);
+  border-color: var(--espresso-night);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--vintage-gold);
+  border-color: rgba(197, 166, 107, 0.5);
+}
+
+.btn-outline-gold:hover {
+  background: rgba(197, 166, 107, 0.12);
+  border-color: var(--vintage-gold);
 }
 
 .btn-light {
-  background: var(--paper);
-  color: var(--espresso);
+  background: var(--soft-white);
+  color: var(--espresso-night);
+  border-color: rgba(197, 166, 107, 0.35);
 }
 
 .btn-light:hover {
-  background: #f8edd9;
+  background: var(--warm-cream);
 }
 
-/* Section kicker and eyebrow */
+/* Eyebrows and Section Kickers */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--coffee);
-  font-size: 10px;
+  gap: 12px;
+  color: var(--roasted-brown);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
   content: "";
   height: 1px;
-  width: 28px;
-  background: var(--gold);
+  width: 32px;
+  background: var(--vintage-gold);
 }
 
 .section-kicker {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--coffee);
-  letter-spacing: 0.2em;
+  color: var(--roasted-brown);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin-bottom: 11px;
+  margin-bottom: 12px;
+}
+
+/* Subtle cinematic animation helpers */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0.15;
+    transform: translateY(0) scaleX(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: translateY(-12px) scaleX(1.15);
+  }
+  100% {
+    opacity: 0.15;
+    transform: translateY(-24px) scaleX(1);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-steam {
+  animation: steamRise 4s ease-in-out infinite;
 }

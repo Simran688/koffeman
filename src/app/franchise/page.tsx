@@ -16,39 +16,45 @@ export const metadata: Metadata = {
 
 export default function FranchisePage() {
   return (
-    <main className="min-h-[80vh] py-8 md:py-14 bg-[#F4E4CA]">
+    <main className="min-h-[80vh] py-10 md:py-16 bg-[#F5EBDD]">
       <Container>
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-[11px] text-[#866D5B] mb-6">
+        <nav aria-label="Breadcrumb" className="text-xs text-[#75452F] mb-6 font-semibold">
           <Link
             href="/"
-            className="text-[#7F5738] font-bold hover:text-[#C84B36] transition-colors"
+            className="text-[#B87943] hover:text-[#21120F] transition-colors"
           >
             ← Home
           </Link>
-          <span className="mx-2">/</span>
-          <span className="text-[#392929] font-medium">Franchise</span>
+          <span className="mx-2 text-[#C5A66B]">/</span>
+          <span className="text-[#21120F]">Franchise</span>
         </nav>
 
         {/* Main Franchise Container Card */}
-        <div className="bg-[#392929] text-[#FFF8EE] rounded-[18px] p-8 md:p-14 relative overflow-hidden shadow-[0_16px_42px_rgba(57,41,41,0.12)]">
+        <div className="bg-[#21120F] text-[#FFFDF8] rounded-[22px] p-8 md:p-14 relative overflow-hidden shadow-[0_24px_55px_rgba(33,18,15,0.25)] border border-[#C5A66B]/30">
           <span
             aria-hidden="true"
-            className="absolute -right-5 -top-36 font-bree text-[500px] text-[#D6B66C]/5 select-none pointer-events-none leading-none"
+            className="absolute -right-8 -top-36 font-cormorant font-bold text-[520px] text-[#C5A66B]/5 select-none pointer-events-none leading-none"
           >
             K
           </span>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 max-lg:gap-8 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center relative z-10">
             <div>
-              <div className="section-kicker text-[#D6B66C]">
+              <div className="text-[10px] uppercase tracking-[0.24em] font-bold text-[#C5A66B] mb-2">
                 {franchiseData.kicker}
               </div>
-              <h1 className="font-bree text-[clamp(34px,4.5vw,52px)] leading-[1.08] tracking-[-0.025em] text-[#F4E4CA] m-0">
+              <h1 className="font-cormorant font-bold text-[clamp(36px,4.5vw,56px)] leading-[1.05] tracking-[-0.025em] text-[#F5EBDD] m-0 mb-3">
                 {franchiseData.title}
               </h1>
-              <p className="text-[14px] leading-[1.8] text-[#f1e4d7] my-6 max-w-[560px]">
+              <div className="text-xs uppercase tracking-[0.2em] font-bold text-[#C5A66B] mb-4">
+                BRING THE KOFFEEMAN EXPERIENCE TO YOUR CITY.
+              </div>
+              <p className="text-sm md:text-base leading-[1.8] text-[#D8C5B8] my-5 max-w-[560px] font-dmsans">
                 {franchiseData.copy}
+              </p>
+              <p className="text-xs sm:text-sm leading-[1.8] text-[#E8D4C2] mb-7 max-w-[560px] font-medium">
+                Be part of a growing coffee and food experience built around quality, variety, and great customer moments.
               </p>
 
               <div>
@@ -56,12 +62,13 @@ export default function FranchisePage() {
                   variant="gold"
                   href={siteConfig.contact.primaryPhoneTel}
                   aria-label={`Call franchise team at ${siteConfig.contact.primaryPhone}`}
+                  className="!py-3.5 !px-7 text-xs font-bold uppercase tracking-wider"
                 >
-                  {franchiseData.ctaText}
+                  {franchiseData.ctaText} ({siteConfig.contact.primaryPhone}) ↗
                 </Button>
               </div>
 
-              <p className="text-[10px] text-[#c4ae98] mt-4 mb-0">
+              <p className="text-xs text-[#A89285] mt-4 mb-0">
                 {franchiseData.note}
               </p>
             </div>
@@ -70,19 +77,19 @@ export default function FranchisePage() {
               {franchiseData.points.map((point) => (
                 <div
                   key={point.number}
-                  className="flex gap-4 items-start p-5 border border-[#D6B66C]/25 rounded-[12px] bg-[#FFF8EE]/[0.045]"
+                  className="flex gap-4 items-start p-5 rounded-[16px] border border-[#C5A66B]/25 bg-[#321D17]/80 backdrop-blur-sm"
                 >
                   <div
                     aria-hidden="true"
-                    className="w-[31px] h-[31px] rounded-full bg-[#D6B66C] text-[#392929] grid place-items-center font-bree text-[15px] shrink-0"
+                    className="w-10 h-10 rounded-full bg-[#C5A66B] text-[#21120F] grid place-items-center font-cormorant font-bold text-lg shrink-0"
                   >
                     {point.number}
                   </div>
                   <div>
-                    <strong className="block font-bree text-[18px] text-[#F4E4CA] mb-1">
+                    <strong className="block font-cormorant font-bold text-[20px] text-[#F5EBDD] mb-1">
                       {point.title}
                     </strong>
-                    <span className="text-[12px] leading-[1.6] text-[#ddcec0]">
+                    <span className="text-xs leading-[1.6] text-[#D8C5B8]">
                       {point.description}
                     </span>
                   </div>
@@ -95,4 +102,3 @@ export default function FranchisePage() {
     </main>
   );
 }
-

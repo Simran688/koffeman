@@ -11,16 +11,17 @@ export function InstagramSection() {
     <section
       id="instagram"
       aria-label="Instagram community"
-      className="bg-[#F4E4CA] py-20 max-sm:py-14 border-t border-[#D9C4A5]/60"
+      className="bg-[#F5EBDD] py-20 md:py-28 border-t border-[#C5A66B]/25"
     >
       <Container>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div>
             <div className="section-kicker">Follow the vibe</div>
-            <h2 className="font-bree text-[clamp(32px,3.8vw,48px)] leading-[1.08] tracking-[-0.025em] text-[#392929] m-0">
+            <h2 className="font-cormorant font-bold text-[clamp(34px,4.5vw,56px)] leading-[1.05] text-[#21120F] m-0">
               KoffeeMan on Instagram
             </h2>
-            <p className="text-[13px] text-[#866D5B] leading-[1.7] max-w-[480px] mt-2 mb-0">
+            <p className="text-sm md:text-base text-[#75452F] leading-relaxed max-w-[500px] mt-2 mb-0">
               Catch our daily brew moments, new comfort cravings, and NSP neighbourhood stories.
             </p>
           </div>
@@ -31,13 +32,14 @@ export function InstagramSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Follow KoffeeMan on Instagram"
+            className="!py-3.5 !px-7 text-xs font-bold uppercase tracking-wider"
           >
             Follow {siteConfig.contact.instagramHandle} ↗
           </Button>
         </div>
 
-        {/* 4-Image Preview Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-sm:gap-2.5">
+        {/* 4-Image Editorial Preview Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {previewImages.map((src, idx) => (
             <a
               key={src}
@@ -45,16 +47,16 @@ export function InstagramSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View KoffeeMan Instagram post ${idx + 1}`}
-              className="group relative h-[220px] max-sm:h-[150px] rounded-[13px] overflow-hidden border border-[#D9C4A5] bg-[#FFF8EE] shadow-[0_5px_17px_rgba(57,41,41,0.04)]"
+              className="group relative h-[220px] sm:h-[260px] rounded-[18px] overflow-hidden border border-[#C5A66B]/30 bg-[#FFFDF8] shadow-[0_10px_25px_rgba(33,18,15,0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#C5A66B] hover:shadow-[0_20px_40px_rgba(33,18,15,0.15)]"
             >
               <Image
                 src={src}
                 alt={`KoffeeMan café moment ${idx + 1}`}
                 fill
                 sizes="(max-width: 640px) 50vw, 25vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-108"
               />
-              <div className="absolute inset-0 bg-[#392929]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-[#FFF8EE] text-xs font-bold gap-1.5 p-3 text-center">
+              <div className="absolute inset-0 bg-[#21120F]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-[#FFFDF8] text-xs font-bold gap-2 p-4 text-center">
                 <span>View on Instagram ↗</span>
               </div>
             </a>
@@ -64,4 +66,3 @@ export function InstagramSection() {
     </section>
   );
 }
-

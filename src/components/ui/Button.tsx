@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-export type ButtonVariant = "dark" | "gold" | "outline" | "light";
+export type ButtonVariant = "dark" | "gold" | "outline" | "outline-gold" | "caramel" | "light";
 
 type BaseButtonProps = {
   variant?: ButtonVariant;
@@ -25,6 +25,8 @@ const variantClasses: Record<ButtonVariant, string> = {
   dark: "btn-dark",
   gold: "btn-gold",
   outline: "btn-outline",
+  "outline-gold": "btn-outline-gold",
+  caramel: "btn-caramel",
   light: "btn-light",
 };
 

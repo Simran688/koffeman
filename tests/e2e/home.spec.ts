@@ -169,8 +169,8 @@ test.describe("Koffee Man Website — End-to-End Suite", () => {
   test("404 error page loads with branded messaging and recovery navigation", async ({
     page,
   }) => {
-    const response = await page.goto("/non-existent-page-url");
-    // Under static preview / dev, verify page renders 404 content
+    await page.goto("/non-existent-page-url");
+    // Under static preview / dev, verify page displays 404 content
     await expect(
       page.getByRole("heading", { name: /Oops! This Cup Is Empty/i })
     ).toBeVisible({ timeout: 15_000 });

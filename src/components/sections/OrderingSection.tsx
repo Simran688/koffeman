@@ -6,7 +6,7 @@ export function OrderingSection() {
     <section
       id="order-online"
       aria-label="Online delivery options"
-      className="bg-[#FFF8EE] py-14 max-sm:py-10 border-t border-b border-[#D9C4A5]"
+      className="bg-[#F5EBDD] py-16 md:py-20 border-t border-b border-[#C5A66B]/25"
     >
       <Container>
         <DeliveryPanel
@@ -17,4 +17,3 @@ export function OrderingSection() {
     </section>
   );
 }
-

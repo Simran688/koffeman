@@ -17,33 +17,41 @@ export const metadata: Metadata = {
 
 export default function VisitUsPage() {
   return (
-    <main className="min-h-[80vh] py-8 md:py-14 bg-[#F4E4CA]">
+    <main className="min-h-[80vh] py-10 md:py-16 bg-[#F5EBDD]">
       <Container>
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-[11px] text-[#866D5B] mb-6">
+        <nav aria-label="Breadcrumb" className="text-xs text-[#75452F] mb-6 font-semibold">
           <Link
             href="/"
-            className="text-[#7F5738] font-bold hover:text-[#C84B36] transition-colors"
+            className="text-[#B87943] hover:text-[#21120F] transition-colors"
           >
             ← Home
           </Link>
-          <span className="mx-2">/</span>
-          <span className="text-[#392929] font-medium">Visit Us</span>
+          <span className="mx-2 text-[#C5A66B]">/</span>
+          <span className="text-[#21120F]">Visit Us</span>
         </nav>
 
         {/* Section Heading */}
-        <div className="mb-10">
-          <div className="section-kicker">Come say hello</div>
-          <h1 className="font-bree text-[clamp(34px,4.5vw,52px)] leading-[1.08] tracking-[-0.025em] text-[#392929] m-0">
-            Find Your KoffeeMan
-          </h1>
-          <p className="text-[14px] text-[#866D5B] leading-[1.7] max-w-[520px] mt-2 mb-0">
-            Visit us at our two NSP neighbourhood spots in Pitampura, Delhi. Grab your regular cup or sit down for comfort-food cravings.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 pb-8 border-b border-[#C5A66B]/25">
+          <div>
+            <div className="section-kicker">Come say hello</div>
+            <h1 className="font-cormorant font-bold text-[clamp(36px,4.5vw,58px)] leading-[1.02] tracking-[-0.025em] text-[#21120F] m-0">
+              Find Your KoffeeMan
+            </h1>
+            <p className="text-sm md:text-base text-[#75452F] leading-relaxed max-w-[540px] mt-2 mb-0">
+              Visit us at our two NSP neighbourhood spots in Pitampura, Delhi. Grab your handcrafted beaten coffee or sit down for comfort-food cravings.
+            </p>
+          </div>
+          <div className="text-right">
+            <span className="eyebrow">{siteConfig.logoTagline}</span>
+            <div className="text-xs text-[#8F7466] italic mt-1 font-lora">
+              &ldquo;On the way, to give you energy.&rdquo;
+            </div>
+          </div>
         </div>
 
-        {/* Outlet Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {/* Outlet Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
           {outletLocations.map((outlet) => (
             <OutletCard key={outlet.id} outlet={outlet} />
           ))}
@@ -55,4 +63,3 @@ export default function VisitUsPage() {
     </main>
   );
 }
-
